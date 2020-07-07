@@ -6,24 +6,6 @@ Considering how much information is generated or carried by an IoT device, organ
 
 The access control models designed for the web applications and cloud computing mainly consist of different permissions about Read and Write. Such a model would never be satisfiable in edge computing due to the more complicity of the systems and their enabled applications. This calls for fine-grained access control that address the questions such as who can access which devices for what reason at when and how. Current access control protocols sucj OAuth can not satisfy this requirement.
 
-## Getting Started
-
-To use this library you should add this dependency to your pom.xml
-```
-<dependency>
-    <groupId>io.natix</groupId>
-    <artifactId>slix</artifactId>
-    <version>1.0</version>
-</dependency>
-```
-It's not available on maven central yet. For now you should add this repository to you pom.xml as well.
-```
-<repository>
-    <id>slix</id>
-    <url>https://github.com/natix/slix/raw/master/mvn-repo</url>
-</repository>
-
-``` 
 
 ## Protocol
 In the scchenarios that a comfirmation is needed form a third party, to exchange attributes related to a peer, 
@@ -235,7 +217,9 @@ You can find description of confirmation packet's parameters in following table:
 |startValidationTime|int64| This is the time frame of the real answer that prover modified, this field should only get field if status is Modified|
 |endValidationTime|int64| This is the time frame of the real answer that prover modified, this field should only get field if status is Modify|
 |validityToken|int64| This is time that until then this token is valid |
-  
+
+
+
 ## Code Walkthrough
 ... Under construction...
 
