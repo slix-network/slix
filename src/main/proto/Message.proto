@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package io.dfive.slix.core.payload.proto;
+
+option java_package = "io.natix.slix.core.payload.proto";
+
+message Signature {
+  int64 time = 1;
+  string data = 2;
+}
+
+message Query {
+  int32 version = 1;
+  string requesterDID = 2;
+  string proverDID = 3;
+  int32 type = 4;
+  repeated string queryArgs = 5;
+}
+
+message RequesterPacket {
+  Query query = 1;
+  Signature signature = 2;
+}
+
+message QRPacket {
+  repeated bytes packets = 1;
+}
+
+
+message Answer {
+  string subjectDID = 1;
+  string proverDID = 2;
+  repeated string answerArgs = 3;
+  int64 startValidationTime = 4;
+  int64 endValidationTime = 5;
+  int64 validityToken = 6;
+  string bundleId = 7;
+}
+
+message SubjectPacket {
+  RequesterPacket requesterPacket = 1;
+  Answer answer = 2;
+  Signature signature = 3;
+
+}
+
+message Confirmation {
+  string proverDID = 1;
+  int32 status = 2;
+  repeated string answerArgs = 3;
+  int64 startValidationTime = 4;
+  int64 endValidationTime = 5;
+  int64 validityToken = 6;
+
+}
+
+message ProverPacket {
+  SubjectPacket subjectPacket = 1;
+  repeated Confirmation confirmations = 3;
+  repeated Signature signatures = 4;
+}
+
+message EncryptedPacket {
+  int32 type = 1; //0 -> requesterPacket, 1 -> subjectPacket, 2 -> proverPacket
+  string did = 2;
+  bytes data = 3;
+}
