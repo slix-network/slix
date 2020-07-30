@@ -1,26 +1,21 @@
 # SLIX
+This is the repository containing refrence implmentation of SLIX protocol. This open-source Java software defines the current state of the protocol.
 
+## Motivation 
 In recent years, the number of deployed mobile and Internet of Things (IoT) devices has been growing drastically. The Edge computing Networks created by these IoT/mobile devices enables participates of the network to offload their tasks to get assisted to deliver the assigned jobs. However, this introduces more security threats since it increases the real-world attack surface, especially in multi-party scenarios where not all the devices are owned by one party.
 
-Considering how much information is generated or carried by an IoT device, organizations have good reasons to keep the data confidential. While it is needed to share information with others, it is hardly possible to ensure that one cannot share information without the consent of the owner. However, if the trustworthy requester of the information, is interested in mutually confirmed data by both parties (e.g. device and owner), we will be able to design a system with high integrity. Such system guarantees a certain level of protection and offering fine-grained access management system.
-
-The access control models designed for the web applications and cloud computing mainly consist of different permissions about Read and Write. Such a model would never be satisfiable in edge computing due to the more complicity of the systems and their enabled applications. This calls for fine-grained access control that address the questions such as who can access which devices for what reason at when and how. Current access control protocols sucj OAuth can not satisfy this requirement.
+The access control models designed for web applications and cloud computing mainly consist of different permissions about Read and Write. Such a model would never be satisfiable in edge computing due to the more complicity of the systems and their enabled applications. This calls for fine-grained access control that addresses the questions such as who can access which devices for what reason at when and how. Current access control protocols such OAuth can not satisfy this requirement.
 
 
 ## Protocol
-In the scchenarios that a comfirmation is needed form a third party, to exchange attributes related to a peer, 
-we can picture a network with three main actors involved: Subject, Requester, and
+In the scchenarios that a comfirmation is needed form a third party, to exchange attributes related to a peer, one can picture a network with three main actors involved: Subject, Requester, and Prover.
 
-[Prover]--------[Subject]--------[Requester]
+[Prover] <--------> [Subject] <--------> [Requester]
 
-In these scenarios, Requester asks for information from a Subject
-but requires to have a confirmation from the corresponding Prover. For example, an institute (Requester) wants to verify that a person or a
-device (Subject) works for the claimed organization (Prover).
+In these scenarios, Requester asks for information from a Subject but requires to have a confirmation from the corresponding Prover. For example, an institute (Requester) wants to verify that a person or a device (Subject) works for the claimed organization (Prover).
 
 
-Hamlib creates a P2P network between nodes of the system. We use proto to serialize and deserialize packets in
-communication between nodes. We use Curve25519 to sign and verify the signature of packets and to calculate a shared key
-between two parties and use the shared key to AES encrypt the whole package. So the communication between nodes are encrypted 
+SLIX sefrence implemention uses proto to serialize and deserialize packets in communication between nodes. It uses Curve25519 to sign and verify the signature of packets and to calculate a shared key between two parties and use the shared key to AES encrypt the whole package. So the communication between nodes are encrypted 
 and can not get interpreted other than the parties who wants to communicate with each other.
 The most underlying packet that can get transferred in this network is:
 
@@ -218,10 +213,6 @@ You can find description of confirmation packet's parameters in following table:
 |endValidationTime|int64| This is the time frame of the real answer that prover modified, this field should only get field if status is Modify|
 |validityToken|int64| This is time that until then this token is valid |
 
-
-
-## Code Walkthrough
-... Under construction...
 
 
 ## License
