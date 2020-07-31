@@ -4,7 +4,7 @@
 
     <groupId>io.natix</groupId>
     <artifactId>slix</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <properties>
         <jdk.version>10</jdk.version>
@@ -12,6 +12,42 @@
         <maven.compiler.source>10</maven.compiler.source>
         <maven.compiler.target>10</maven.compiler.target>
     </properties>
+
+
+    <name>SLIX</name>
+    <description>This is the repository containing refrence implmentation of SLIX protocol. This open-source Java software defines the current state of the protocol.</description>
+    <url>https://github.com/slix-network/slix</url>
+
+    <licenses>
+        <license>
+            <name>AGPL-3.0</name>
+            <url>https://github.com/slix-network/slix/blob/develop/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>alireza_cross</id>
+            <name>Alireza Ghias</name>
+            <email>alirezaght@gmail.com</email>
+            <url>http://github.com/alirezaght</url>
+            <roles>
+                <role>designer</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>PayamVahedi</id>
+            <name>Payam Vahedi</name>
+            <email>payam.vahedi@gmail.com</email>
+            <url>https://github.com/PayamVahedi</url>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+
 
     <scm>
         <connection>scm:git:git://github.com/slix-network/slix.git</connection>
@@ -234,6 +270,32 @@
 
 
         </plugins>
+
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.2.0</version>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                            <configuration>
+                                <source>
+                                    ${maven.compiler.source}
+                                </source>
+                                <failOnError>false</failOnError>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
     </build>
 
     <profiles>
