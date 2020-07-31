@@ -4,7 +4,7 @@
 
     <groupId>io.natix</groupId>
     <artifactId>slix</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
     <properties>
         <jdk.version>10</jdk.version>
@@ -17,7 +17,7 @@
         <connection>scm:git:git://github.com/slix-network/slix.git</connection>
         <developerConnection>scm:git:git@github.com:slix-network/slix.git</developerConnection>
         <url>https://github.com/slix-network/slix.git</url>
-        <tag>HEAD</tag>
+        <tag>slix-0.0.1</tag>
     </scm>
 
     <distributionManagement>
@@ -212,29 +212,30 @@
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <configuration> <!-- add this to disable checking -->
-                            <additionalOptions>
-                                <additionalOption>-Xdoclint:none</additionalOption>
-                            </additionalOptions>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+
 
 
 
         </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>2.10.2</version>
+                    <executions>
+                        <execution>
+                            <configuration> <!-- add this to disable checking -->
+                                <additionalparam>-Xdoclint:none</additionalparam>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
+
+
 
     <profiles>
         <!-- GPG Signature on release -->
